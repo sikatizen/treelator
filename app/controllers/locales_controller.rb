@@ -34,7 +34,7 @@ class LocalesController < ApplicationController
     respond_to do |format|
       if @locale.save
         flash[:notice] = 'Locale was successfully created.'
-        format.html { redirect_to(@locale) }
+        format.html { redirect_to locales_path }
         format.xml  { render :xml => @locale, :status => :created, :location => @locale }
       else
         format.html { render :action => "new" }
@@ -51,7 +51,7 @@ class LocalesController < ApplicationController
     respond_to do |format|
       if @locale.update_attributes(params[:locale])
         flash[:notice] = 'Locale was successfully updated.'
-        format.html { redirect_to(@locale) }
+        format.html { redirect_to locales_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

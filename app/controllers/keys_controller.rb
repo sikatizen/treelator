@@ -52,7 +52,7 @@ class KeysController < ApplicationController
     respond_to do |format|
       if @key.update_attributes(params[:key])
         flash[:notice] = 'Key was successfully updated.'
-        format.html { redirect_to(@key) }
+        format.html { redirect_to keys_path}
         format.xml  { head :ok }
       else
         @namespaces = Key.find_namespaces
