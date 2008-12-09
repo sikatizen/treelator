@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  key_id: 1
+  locale_id: 1
+  value: MyString
+
+two:
+  key_id: 1
+  locale_id: 1
+  value: MyString

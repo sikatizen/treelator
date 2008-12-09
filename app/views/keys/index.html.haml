@@ -1,0 +1,17 @@
+%h1 Listing keys
+%p= link_to "add a key", new_key_path
+
+%ul
+  - for key in @keys
+    %li
+      = key.name
+      = link_to "edit", edit_key_path(key)
+      = link_to "Destroy", key, :confirm => "are you sure ?", :method => :delete
+      
+- for namespace in @namespaces
+  = namespace.name
+  %hr
+  %ul
+  - for child in namespace.children
+    %li= child.name
+    

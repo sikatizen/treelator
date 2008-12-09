@@ -1,0 +1,21 @@
+%h1 Add a key or namespace
+
+- form_for @key do |f| 
+  = f.error_messages 
+
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  
+  %p
+    = f.label :parent
+    %br
+    = select("key", "parent_id", @namespaces.collect { |c| [ c.name, c.id]}, { :include_blank => true }, {})
+  %p
+    = f.label :namespace
+    %br
+    = f.check_box :namespace
+  
+  %p
+    = f.submit "Save"
