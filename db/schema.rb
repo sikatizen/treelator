@@ -9,12 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081209104835) do
+ActiveRecord::Schema.define(:version => 20081209132307) do
 
   create_table "keys", :force => true do |t|
     t.string   "name"
     t.integer  "parent_id"
     t.boolean  "namespace"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locales", :force => true do |t|
+    t.string   "iso_code"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "translations", :force => true do |t|
+    t.integer  "key_id"
+    t.integer  "locale_id"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,6 +6,9 @@ class CreateLocales < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    Locale.create!( :iso_code => "en-US", :name => "English US")
+    Locale.create!( :iso_code => "fr_FR", :name => "Français (France)")
   end
 
   def self.down
