@@ -11,4 +11,8 @@ class Key < ActiveRecord::Base
     self.find(:all, :conditions => { :namespace => true })
   end
   
+  def self.find_root_namespaces
+    self.find(:all, :conditions => { :namespace => true, :parent_id => nil })
+  end
+  
 end

@@ -1,26 +1,28 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
-  def display_namespace(namespace)
-    html = ""
-    html += ""
+    
+  def display_namespaces(key, padding=0)
+    html = "<div style=\"padding-left:#{padding}px\">"
+    if key.children.empty? && key.namespace == true
+      html += "<b>#{key.name}</b>"
+    elsif key.children.empty?
+      html += display_key(key)
+    else
+      html += "<b>#{key.name}</b>"
+      for child in key.children
+        html += display_namespaces(child, padding+6)
+      end
+    end
+    html += "</div>"
+    html
   end
   
   
   def display_key(key)
-    html = ""
-    if key.children.empty?
-      html += "<li>#{key.name}</li>"
-    else
-      html += "<li>#{key.name}</li>"
-      html += "<ul>"
-      
-      for child in key.children
-        display_key(child)
-      end
-      html += "</ul>"
-    end
-    html
+    html= "#{key.name}"
+    html += " | "
+    html += (link_to "edit", edit_key_path(key))
+    html += " | "
+    html += (link_to "Destroy", key, :confirm => "are you sure ?", :method => :delete)
   end
-  
 end

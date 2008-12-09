@@ -12,10 +12,11 @@
     = f.label :parent
     %br
     = select("key", "parent_id", @namespaces.collect { |c| [ c.name, c.id]}, { :include_blank => true }, {})
-  %p
-    = f.label :namespace
-    %br
-    = f.check_box :namespace
+  - unless params[:action] == "edit"
+    %p
+      = f.label :namespace
+      %br
+      = f.check_box :namespace
   
   %p
     = f.submit "Save"

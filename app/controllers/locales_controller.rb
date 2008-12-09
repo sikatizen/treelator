@@ -10,17 +10,6 @@ class LocalesController < ApplicationController
     end
   end
 
-  # GET /locales/1
-  # GET /locales/1.xml
-  def show
-    @locale = Locale.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @locale }
-    end
-  end
-
   # GET /locales/new
   # GET /locales/new.xml
   def new

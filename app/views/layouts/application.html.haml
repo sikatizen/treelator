@@ -1,0 +1,18 @@
+!!!
+%html
+%head
+  %link{:rel=>"shortcut icon", :href=>"/favicon.ico"}
+  %meta{"http-equiv"=>"Content-Type", :content=>"text/html;charset=utf-8"}
+
+  %title= "Sikalator"
+  
+  / %script{ :type => "text/javascript", :charset => "utf-8" }
+  /   = "window._token = '#{form_authenticity_token}';"
+    
+  / = stylesheet_link_tag "style.css"
+  / = javascript_include_tag :all
+%body
+  #header
+    = render :partial => "shared/header"
+  #content
+    = yield
