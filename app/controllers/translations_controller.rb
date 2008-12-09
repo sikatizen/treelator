@@ -3,7 +3,7 @@ class TranslationsController < ApplicationController
   # GET /translations.xml
   def index
     @translations = Translation.find(:all)
-
+    p Translation.find_keys_by_locale(1)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @translations }
