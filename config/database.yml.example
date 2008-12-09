@@ -1,0 +1,14 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: sikalator_dev
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+test:
+  adapter: mysql
+  encoding: utf8
+  database: sikalator_test
+  username: root
+  password:
+  socket: /tmp/mysql.sock
