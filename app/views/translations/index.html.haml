@@ -1,6 +1,31 @@
 %b= "Select a Locale: "
 - for locale in @locales do
-  = "#{locale.name}"
+  = link_to "#{locale.name}", translations_path(:locale_id => locale.id)
+  
+%hr
+
+%table
+  %tr
+    %th= "keys"
+    %th= "English"
+    %th= session[:locale].name
+    %th
+  - for key in @keys do
+    %tr
+      %td= key.name
+      %td= key.find_translation_by_locale(1).value if key.find_translation_by_locale(1)
+      %td
+        - if key.find_translation_by_locale(session[:locale].id)
+          - form_for key.find_translation_by_locale(session[:locale].id) do |f|
+            = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value
+            = f.submit "Save"
+        - else
+          - form_for Translation.new do |f|
+            = f.text_field :value
+            = f.hidden_field :locale_id, :value => session[:locale].id
+            = f.hidden_field :key_id, :value => key.id
+            = f.submit "Save"
+          
 / <h1>Listing translations</h1>
 / 
 / <table>

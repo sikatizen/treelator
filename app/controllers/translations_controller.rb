@@ -3,7 +3,7 @@ class TranslationsController < ApplicationController
   # GET /translations.xml
   def index
     @locales = Locale.all
-    @translations = Translation.find(:all)
+    @keys = Key.paginate :all, :page => params[:page], :order => 'updated_at DESC', :conditions => { :namespace => false }
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @translations }
@@ -45,7 +45,7 @@ class TranslationsController < ApplicationController
     respond_to do |format|
       if @translation.save
         flash[:notice] = 'Translation was successfully created.'
-        format.html { redirect_to(@translation) }
+        format.html { redirect_to translations_path }
         format.xml  { render :xml => @translation, :status => :created, :location => @translation }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class TranslationsController < ApplicationController
     respond_to do |format|
       if @translation.update_attributes(params[:translation])
         flash[:notice] = 'Translation was successfully updated.'
-        format.html { redirect_to(@translation) }
+        format.html { redirect_to translations_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

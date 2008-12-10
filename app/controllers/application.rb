@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     #TODO write this function (set_locale)
+    if session[:locale].nil?
+      session[:locale] = Locale.first
+    end
+    
+    if params[:locale_id]
+      session[:locale] = Locale.find(params[:locale_id])
+    end
+    
   end
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
