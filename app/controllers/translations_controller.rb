@@ -2,8 +2,8 @@ class TranslationsController < ApplicationController
   # GET /translations
   # GET /translations.xml
   def index
+    @locales = Locale.all
     @translations = Translation.find(:all)
-    p Translation.find_keys_by_locale(1)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @translations }

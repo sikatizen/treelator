@@ -1,0 +1,27 @@
+%b= "Select a Locale: "
+- for locale in @locales do
+  = "#{locale.name}"
+/ <h1>Listing translations</h1>
+/ 
+/ <table>
+/   <tr>
+/     <th>Key</th>
+/     <th>Locale</th>
+/     <th>Value</th>
+/   </tr>
+/ 
+/ <% for translation in @translations %>
+/   <tr>
+/     <td><%=h translation.key_id %></td>
+/     <td><%=h translation.locale_id %></td>
+/     <td><%=h translation.value %></td>
+/     <td><%= link_to 'Show', translation %></td>
+/     <td><%= link_to 'Edit', edit_translation_path(translation) %></td>
+/     <td><%= link_to 'Destroy', translation, :confirm => 'Are you sure?', :method => :delete %></td>
+/   </tr>
+/ <% end %>
+/ </table>
+/ 
+/ <br />
+/ 
+/ <%= link_to 'New translation', new_translation_path %>
