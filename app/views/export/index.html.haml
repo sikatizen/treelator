@@ -1,0 +1,13 @@
+%h1 Export file
+
+%table
+  %tr
+    %th= "locale"
+    %th= "export as Yaml"
+  - for locale in @locales do
+    %tr
+      %td= locale.name
+      %td= "Yaml"
+      
+= @keys.to_yaml
+    

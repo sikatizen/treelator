@@ -1,8 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :translations
-
   map.resources :locales
-
+  map.export "/export", :controller => "export"
   
   map.root :controller => "keys", :action => "index"
   map.resources :keys
