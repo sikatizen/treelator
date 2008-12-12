@@ -20,4 +20,17 @@ module SikalatorLib
       parent_id = Key.create!( :name => key, :namespace => true, :parent_id => parent_id).id
       import_hash(hash, parent_id)
     end
+    
+    def export_namespace(namespace, locale_id)
+      export = {}
+      
+      for child in namespace.children do
+        if child.namespace
+          export["#{child.name}"] = export_namespace(child, locale_id)
+        else
+          export["#{child.name}"] = child.find_translation_by_locale(locale_id).value if child.find_translation_by_locale(locale_id) 
+        end
+      end
+      export
+    end
 end

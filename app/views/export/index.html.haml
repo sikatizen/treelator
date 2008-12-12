@@ -7,7 +7,6 @@
   - for locale in @locales do
     %tr
       %td= locale.name
-      %td= "Yaml"
-      
-= @keys.to_yaml
+      %td= link_to "Yaml", export_file_path
+
     

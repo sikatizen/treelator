@@ -9,8 +9,8 @@
   / %script{ :type => "text/javascript", :charset => "utf-8" }
   /   = "window._token = '#{form_authenticity_token}';"
     
-  / = stylesheet_link_tag "style.css"
-  / = javascript_include_tag :all
+  = stylesheet_link_tag "style.css"
+  = javascript_include_tag :defaults
 %body
   #header
     = render :partial => "shared/header"

@@ -3,18 +3,27 @@ class ExportController < ApplicationController
     @locales = Locale.all
     @keys = Key.all
     
-    export
+    #export
   end
   
-  def export
+  def export_file
   @keys = Key.find_key_without_parent
   @namespaces = Key.find_root_namespaces
   
-  @txt = { }
+  export = { }
   for key in @keys
-    @txt["#{key.name}"] = key.find_translation_by_locale(session[:locale].id).value
+    export["#{key.name}"] = key.find_translation_by_locale(session[:locale].id).value
   end
   
-  #for namespaces
+  for namespace in @namespaces do
+    export["#{namespace.name}"] = export_namespace(namespace, session[:locale].id)
+  end
+  @export = {}
+  @export["#{session[:locale].iso_code}"] = export
+  respond_to do |format|
+    format.yaml
+    #format.html
+  end
+  
   end
 end

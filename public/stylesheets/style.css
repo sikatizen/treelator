@@ -1,0 +1,28 @@
+.namespace{
+  width:500px;
+  border-left: 2px dashed #aaa;
+  padding-left:3px;
+}
+
+.namespace_children{
+  padding-left:15px;
+}
+
+.namespace_name{
+  font-size:22px;
+  cursor:pointer;
+}
+
+.key{
+  
+}
+
+#select_local a, #select_namespace a{
+  text-decoration:none;
+  color: black;
+}
+
+#select_local span.local_selected, #select_namespace span.namespace_selected{
+  font-size:140%;
+  text-decoration:underline;
+}
