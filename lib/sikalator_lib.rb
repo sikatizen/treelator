@@ -2,7 +2,6 @@ module SikalatorLib
   
   protected
 
-
     def import_hash(hash, parent_id=nil)
       hash.each_key {|key| is_hash(hash.values_at(key).first) ? create_namespace(key, hash.values_at(key).first, parent_id) : (create_key_and_translation(key, hash.values_at(key).first, parent_id))}
     end
