@@ -1,0 +1,11 @@
+= "#{namespace.name}: "
+- tab_up
+-for child in namespace.children do
+  - if child.namespace
+    = render :partial => "export/namespace", :locals => { :namespace => child}
+  -elsif child.sequence
+    = render :partial => "export/sequence", :locals => { :sequence => child }
+  - else
+    = render :partial => "export/key", :locals => { :key => child }
+- tab_down
+  

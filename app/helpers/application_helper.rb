@@ -25,4 +25,5 @@ module ApplicationHelper
     html += " | "
     html += (link_to "Destroy", key, :confirm => "are you sure ?", :method => :delete)
   end
+
 end

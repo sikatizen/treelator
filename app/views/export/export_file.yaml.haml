@@ -1,1 +1,9 @@
-= @export.to_yaml
+-#= @export.to_yaml( :fold => true )
+= "#{session[:locale].iso_code} :"
+- tab_up
+
+- for key in @keys do
+  = render :partial => "export/key", :locals => { :key => key }
+  
+- for namespace in @namespaces do
+  = render :partial => "export/namespace", :locals => { :namespace => namespace }

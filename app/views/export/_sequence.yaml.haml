@@ -1,0 +1,8 @@
+- str = "["
+- for child in sequence.children do
+  - if child == sequence.children.last 
+    - str += "#{child.find_translation_by_locale(session[:locale].id).value} ]"
+  - else
+    - str += "#{child.find_translation_by_locale(session[:locale].id).value}, "
+    
+= "#{sequence.name} : #{str}"

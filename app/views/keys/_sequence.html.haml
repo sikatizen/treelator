@@ -1,9 +1,9 @@
 .namespace
-  .namespace_name{ :onclick => "$('namespace_#{namespace.id}').toggle();"}
-    %b= namespace.name
+  .namespace_name{ :onclick => "$('namespace_#{sequence.id}').toggle();"}
+    %b= "[#{sequence.name}]"
     %hr
-  %div{ :id => "namespace_#{namespace.id}", :class => "namespace_children", :style => "display:none"}
-    - for child in namespace.children do
+  %div{ :id => "namespace_#{sequence.id}", :class => "namespace_children", :style => "display:none"}
+    - for child in sequence.children do
       - if child.namespace
         = render :partial => "keys/namespace", :locals => { :namespace => child }
       -elsif child.sequence
