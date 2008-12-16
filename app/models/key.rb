@@ -6,6 +6,8 @@ class Key < ActiveRecord::Base
   has_many :translations
   has_many :locales, :through => :translations
   
+  validates_presence_of :name
+  
   def self.find_key_without_parent
     self.find(:all, :conditions => { :parent_id => nil, :namespace => false })
   end

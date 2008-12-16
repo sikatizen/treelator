@@ -12,7 +12,7 @@
     = f.label :parent
     %br
     = select("key", "parent_id", @namespaces.collect { |c| [ c.name, c.id]}, { :include_blank => true }, {})
-  - unless params[:action] == "edit"
+  - unless params[:action] == "edit" || params[:action] == "update" 
     %p
       = f.label :namespace
       %br
@@ -21,6 +21,19 @@
       = f.label :sequence
       %br
       = f.check_box :sequence
-    
+    %p
+      = label_tag "Display item in sequence as string (in \"\")"
+      %br
+      = f.check_box :is_string
+      
+    -#%p
+    -#  = radio_button_tag "is_key", "key", 0, :checked => true
+    -#  = f.label "key  "
+    -#  = radio_button_tag "is_key", "namespace", 1
+    -#  = f.label "namespace"
+    -#  = radio_button_tag "is_key", "sequence", 2
+    -#  = f.label "sequence"
+      
+      
   %p
     = f.submit "Save"
