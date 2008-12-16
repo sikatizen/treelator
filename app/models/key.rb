@@ -1,7 +1,7 @@
 class Key < ActiveRecord::Base
   
   belongs_to :parent, :class_name => "Key"
-  has_many :children, :class_name => "Key", :foreign_key => "parent_id"
+  has_many :children, :class_name => "Key", :foreign_key => "parent_id", :dependent => :destroy
   
   has_many :translations
   has_many :locales, :through => :translations

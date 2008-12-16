@@ -1,6 +1,9 @@
 .namespace
   .namespace_name{ :onclick => "$('namespace_#{namespace.id}').toggle();"}
     %b= namespace.name
+    = link_to "edit", edit_key_path(namespace)
+    = " | "
+    = link_to "Remove", namespace, :confirm => "are you sure ? All key in this name space will no longer be available.", :method => :delete
     %hr
   %div{ :id => "namespace_#{namespace.id}", :class => "namespace_children", :style => "display:none"}
     - for child in namespace.children do
