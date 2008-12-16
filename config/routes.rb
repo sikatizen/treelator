@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :translations
   map.resources :locales
   map.export "/export", :controller => "export"
-  map.export_file "/export/export_file", :controller => "export", :action => "export_file" 
+  map.export_file "/export/export_file", :controller => "export", :action => "export_file"
   
   map.root :controller => "keys", :action => "index"
   map.resources :keys

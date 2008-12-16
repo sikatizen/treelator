@@ -1,1 +1,2 @@
-= "#{key.name}: \"#{key.find_translation_by_locale(session[:locale].id).value}\""
+- unless key.find_translation_by_locale(session[:locale].id).nil?
+  = "#{key.name}: \"#{key.find_translation_by_locale(session[:locale].id).value}\""

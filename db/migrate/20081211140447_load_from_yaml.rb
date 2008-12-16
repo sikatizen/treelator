@@ -43,7 +43,7 @@ class LoadFromYaml < ActiveRecord::Migration
     header_message = Key.create!( :sequence => true, :name => "header_message", :parent_id => namespace.id )
     
     for error in ["Couldn't save this {{object_name}}: 1 error", "Couldn't save this {{object_name}}: {{count}} errors."] do
-      key = Key.create!( :name => error, :parent_id => header_message.id )
+      key = Key.create!( :name => error, :parent_id => header_message.id, :is_string => true )
       Translation.create!( :value => error, :key_id => key.id, :locale_id => locale.id)
     end
   end

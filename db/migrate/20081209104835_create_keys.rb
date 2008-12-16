@@ -5,7 +5,7 @@ class CreateKeys < ActiveRecord::Migration
       t.integer :parent_id
       t.boolean :namespace, :default => false
       t.boolean :sequence, :default => false
-      t.boolean :is_string :default => true
+      t.boolean :is_string, :default => false
       
       t.timestamps
     end

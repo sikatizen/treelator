@@ -7,6 +7,6 @@
   - for locale in @locales do
     %tr
       %td= locale.name
-      %td= link_to "Yaml", export_file_path
+      %td= link_to "Yaml", export_file_path(:locale_id => locale.id)
 
     

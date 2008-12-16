@@ -25,5 +25,28 @@ module ApplicationHelper
     html += " | "
     html += (link_to "Destroy", key, :confirm => "are you sure ?", :method => :delete)
   end
+  
+  def merge_sequence_string(sequence)
+    str = "["
+    for child in sequence.children do
+      unless child.find_translation_by_locale(session[:locale].id).nil?
+        if child == sequence.children.last
+          if child.is_string
+            str += "\"#{child.find_translation_by_locale(session[:locale].id).value}\""
+          else
+           str += "#{child.find_translation_by_locale(session[:locale].id).value}"
+         end
+        else
+          if child.is_string
+            str += "\"#{child.find_translation_by_locale(session[:locale].id).value}\", "
+          else
+            str += "#{child.find_translation_by_locale(session[:locale].id).value}, "
+          end
+        end
+      end
+    end
+    str += "]"
+    return str
+  end
 
 end
