@@ -4,44 +4,51 @@
   - for locale in @locales do
     %span{ :class => session[:locale] == locale ? "local_selected" : ""}
       = link_to "#{locale.name}", translations_path(:locale_id => locale.id, :namespace_id => @namespace ? @namespace.id : nil)
-      = " | "
+    = " | "
   %hr
-#select_namespace
-  %b= "Select a namespace"
-  %br
-  - for namespace in @namespaces do
-    %span{ :class => @namespace == namespace ? "namespace_selected" : ""}
-      - unless namespace.children.size < 0
-        = link_to "#{namespace.name}", translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
-        = " | "
-  - for sequence in @sequences do
-    %span{ :class => @namespace == sequence ? "namespace_selected" : ""}
-      - unless namespace.children.size < 0
-        = link_to "[#{sequence.name}]", translations_path(:locale_id => session[:locale].id, :namespace_id => sequence.id)
-        = " | "
 
-- if @namespace
-  %table
-    %tr
-      %th= "keys"
-      %th= "English"
-      %th= session[:locale].name
-      %th
-    - for key in @namespace.children do
-      - unless key.namespace || key.sequence
+  -#%b= "Select a namespace"
+  -#%br
+  -#- for namespace in @namespaces do
+  -#  %span{ :class => @namespace == namespace ? "namespace_selected" : ""}
+  -#    - unless namespace.children.size < 0
+  -#      = link_to "#{namespace.name}", translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
+  -#      = " | "
+  -#- for sequence in @sequences do
+  -#  %span{ :class => @namespace == sequence ? "namespace_selected" : ""}
+  -#    - unless namespace.children.size < 0
+  -#      = link_to "[#{sequence.name}]", translations_path(:locale_id => session[:locale].id, :namespace_id => sequence.id)
+  -#      = " | "
+
+#tr_content
+  #tr_left
+    %b= "Select a namespace"
+    #select_namespace
+      - for namespace in @namespaces
+        = render :partial => "translations/namespace", :locals => { :namespace => namespace }
+  #tr_right
+    - if @namespace
+      %table
         %tr
-          %td= key.name
-          %td= key.find_translation_by_locale(1).value if key.find_translation_by_locale(1)
-          %td
-            - if key.find_translation_by_locale(session[:locale].id)
-              - form_for key.find_translation_by_locale(session[:locale].id) do |f|
-                = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value
-                = hidden_field_tag :namespace_id, @namespace.id
-                = f.submit "Save"
-            - else
-              - form_for Translation.new do |f|
-                = f.text_field :value
-                = f.hidden_field :locale_id, :value => session[:locale].id
-                = f.hidden_field :key_id, :value => key.id
-                = hidden_field_tag :namespace_id, @namespace.id
-                = f.submit "Save"
+          %th= "keys"
+          %th= "English"
+          %th= session[:locale].name
+          %th
+        - for key in @namespace.children do
+          - unless key.namespace || key.sequence
+            %tr
+              %td= key.name
+              %td= key.find_translation_by_locale(1).value if key.find_translation_by_locale(1)
+              %td
+                - if key.find_translation_by_locale(session[:locale].id)
+                  - form_for key.find_translation_by_locale(session[:locale].id) do |f|
+                    = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value
+                    = hidden_field_tag :namespace_id, @namespace.id
+                    = f.submit "Save"
+                - else
+                  - form_for Translation.new do |f|
+                    = f.text_field :value
+                    = f.hidden_field :locale_id, :value => session[:locale].id
+                    = f.hidden_field :key_id, :value => key.id
+                    = hidden_field_tag :namespace_id, @namespace.id
+                    = f.submit "Save"

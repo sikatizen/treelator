@@ -1,0 +1,10 @@
+.namespace
+  %span{ :class => @namespace == namespace ? "namespace_selected namespace_name" : "namespace_name"}
+    - unless namespace.sequence
+      = link_to namespace.name, translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
+    - else
+      = link_to "[#{namespace.name}]", translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
+  .namespace_children
+    - for child in namespace.children
+      - if child.namespace || child.sequence
+        = render :partial => "translations/namespace", :locals => { :namespace => child }

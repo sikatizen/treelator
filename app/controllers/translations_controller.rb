@@ -5,7 +5,7 @@ class TranslationsController < ApplicationController
     @locales = Locale.all
     @keys = Key.find_key_without_parent
     params[:namespace_id] ? @namespace = Key.find(params[:namespace_id].to_i) : nil
-    @namespaces = Key.find_namespaces
+    @namespaces = Key.find_root_namespaces
     @sequences = Key.find_sequences
     respond_to do |format|
       format.html

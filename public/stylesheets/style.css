@@ -26,3 +26,29 @@
   font-size:140%;
   text-decoration:underline;
 }
+#tr_content{
+ width:1000px;
+}
+#tr_left{
+  width:200px;
+  float:left;
+}
+
+#tr_right{
+  float:left;
+  width:800px;
+}
+
+#tr_left .namespace{
+  border-left: 2px dashed #aaa;
+  padding-left:3px;
+}
+
+#tr_left .namespace_name{
+  font-size:15px;
+  font-weight:bold;
+}
+
+#tr_left .namespace_children{
+  padding-left:15px;
+}
