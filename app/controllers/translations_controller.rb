@@ -25,4 +25,16 @@ class TranslationsController < ApplicationController
       end
     end
   end
+  
+  def update
+    @translation = Translation.find(params[:id])
+
+    respond_to do |format|
+      if @translation.update_attributes(params[:translation])
+        format.html { redirect_to translations_path( :namespace_id => params[:namespace_id], :locale_id => session[:locale_id]) }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
 end
