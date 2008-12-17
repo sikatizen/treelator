@@ -30,7 +30,17 @@ class KeysController < ApplicationController
   # POST /keys.xml
   def create
     @key = Key.new(params[:key])
-
+    p params
+    case params[:key_type]
+      when 'key'
+        @key.is_string = false
+      when 'namespace'
+        @key.is_string = false
+        @key.namespace = true
+      when
+        @key.sequence = true
+    end
+    
     respond_to do |format|
       if @key.save
         flash[:notice] = 'Key was successfully created.'
