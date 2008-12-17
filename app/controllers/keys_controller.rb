@@ -30,7 +30,6 @@ class KeysController < ApplicationController
   # POST /keys.xml
   def create
     @key = Key.new(params[:key])
-    p params
     case params[:key_type]
       when 'key'
         @key.is_string = false

@@ -22,7 +22,7 @@
 
 #tr_content
   #tr_left
-    %b= "Select a namespace"
+    %b{ :style => "text-decoration:underline"}= "Select a namespace"
     #select_namespace
       - for namespace in @namespaces
         = render :partial => "translations/namespace", :locals => { :namespace => namespace }

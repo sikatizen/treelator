@@ -6,10 +6,10 @@ class Key < ActiveRecord::Base
   has_many :translations
   has_many :locales, :through => :translations
   
-  validates_presence_of :name
+  validates_presence_of :name, :parent_id
   
   def self.find_key_without_parent
-    self.find(:all, :conditions => { :parent_id => nil, :namespace => false })
+    self.find(:all, :conditions => { :parent_id => 0, :namespace => false })
   end
   
   def self.find_namespaces
@@ -17,7 +17,7 @@ class Key < ActiveRecord::Base
   end
   
   def self.find_root_namespaces
-    self.find(:all, :conditions => { :namespace => true, :parent_id => nil })
+    self.find(:all, :conditions => { :namespace => true, :parent_id => 0 })
   end
   
   def self.find_sequences

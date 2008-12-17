@@ -1,8 +1,9 @@
 %h1 Listing keys and Namespaces
 %p= link_to "add a key", new_key_path
 
--#- for key in @keys
--#  = display_key(key)
+- for key in @keys
+  = display_key(key)
+  %br
 -#  %br
 -#  
 -#- for namespace in @namespaces
