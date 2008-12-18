@@ -1,0 +1,12 @@
+= link_to "Add a user", signup_path
+%table
+  %tr
+    %th= "Login"
+    %th= "E-mail"
+    %th= "Role"
+  
+  - for user in @users do
+    %tr
+      %td= user.login
+      %td= user.email
+      %td= user.role

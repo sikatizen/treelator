@@ -4,6 +4,8 @@
     = link_to "edit", edit_key_path(namespace)
     = " | "
     = link_to "Remove", namespace, :confirm => "are you sure ? All key in this name space will no longer be available.", :method => :delete
+    = " | "
+    = link_to "Add a key", new_key_path( "key[parent_id]" => namespace.id)
     %hr
   %div{ :id => "namespace_#{namespace.id}", :class => "namespace_children", :style => "display:none"}
     - for child in namespace.children do

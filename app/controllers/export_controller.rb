@@ -1,4 +1,5 @@
 class ExportController < ApplicationController
+  before_filter :login_required
   def index
     @locales = Locale.all
   end
@@ -24,5 +25,9 @@ class ExportController < ApplicationController
       response.headers['Content-Disposition'] = "attachment; filename=#{@locale.iso_code}.yml"
       format.yaml
     end
+  end
+  
+  def authorized?
+    is_admin?
   end
 end

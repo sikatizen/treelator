@@ -15,5 +15,10 @@
 <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
 <%= f.password_field :password_confirmation %></p>
 
+<p>
+  <%= label_tag 'role', 'Add a role' %><br/>
+  <%= select( "user", "role", { "Admin" => "admin", "Supervisor" => "supervisor", "Translator" => "translator"}) %>
+</p>
+
 <p><%= submit_tag 'Sign up' %></p>
 <% end -%>

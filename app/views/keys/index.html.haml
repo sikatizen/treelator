@@ -3,12 +3,7 @@
 
 - for key in @keys
   = display_key(key)
-  %br
--#  %br
--#  
--#- for namespace in @namespaces
--#  = display_namespaces(namespace)
-    
+  %br  
     
 - for namespace in @namespaces
   = render :partial => "keys/namespace", :locals => { :namespace => namespace }

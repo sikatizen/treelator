@@ -3,8 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  
   map.resources :users
-
   map.resource :session
 
   map.resources :translations
@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.export "/export", :controller => "export"
   map.export_file "/export/export_file", :controller => "export", :action => "export_file"
   
-  map.root :controller => "keys", :action => "index"
+  map.root :controller => "translations", :action => "index"
   map.resources :keys
 
   # The priority is based upon order of creation: first created -> highest priority.

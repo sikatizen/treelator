@@ -1,6 +1,8 @@
 .namespace
   .namespace_name{ :onclick => "$('namespace_#{sequence.id}').toggle();"}
     %b= "[#{sequence.name}]"
+    -#= " | "
+    -#= link_to "Add a key", new_key_path( "key[parent_id]" => sequence.id)
     %hr
   %div{ :id => "namespace_#{sequence.id}", :class => "namespace_children", :style => "display:none"}
     - for child in sequence.children do

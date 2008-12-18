@@ -1,4 +1,5 @@
 class LocalesController < ApplicationController
+  before_filter :login_required
   # GET /locales
   # GET /locales.xml
   def index
@@ -71,4 +72,9 @@ class LocalesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def authorized?
+    is_admin?
+  end
+  
 end

@@ -1,4 +1,5 @@
 class TranslationsController < ApplicationController
+  before_filter :login_required
   # GET /translations
   # GET /translations.xml
   def index
@@ -36,5 +37,9 @@ class TranslationsController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
+  end
+  
+  def authorized?
+    is_admin? || is_supervisor? || is_translator?
   end
 end

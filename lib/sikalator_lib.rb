@@ -33,4 +33,16 @@ module SikalatorLib
       end
       export
     end
+    
+    def is_admin?
+      logged_in? && current_user.role == "admin"
+    end
+    
+    def is_supervisor?
+      logged_in? && (current_user.role == "supervisor" || current_user.role == "admin")
+    end
+    
+    def is_translator?
+      logged_in? && (current_user.role == "translator" || current_user.role == "supervisor" || current_user.role == "admin")
+    end
 end

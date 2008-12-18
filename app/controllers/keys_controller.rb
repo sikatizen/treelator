@@ -1,4 +1,5 @@
 class KeysController < ApplicationController
+  before_filter :login_required
   # GET /keys
   # GET /keys.xml
   def index
@@ -12,7 +13,7 @@ class KeysController < ApplicationController
   # GET /keys/new
   # GET /keys/new.xml
   def new
-    @key = Key.new
+    @key = Key.new(params[:key])
     @namespaces = Key.find_namespaces
     respond_to do |format|
       format.html # new.html.erb
@@ -81,5 +82,9 @@ class KeysController < ApplicationController
       format.html { redirect_to(keys_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def authorized?
+    is_admin?
   end
 end
