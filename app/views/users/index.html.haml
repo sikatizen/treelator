@@ -4,9 +4,21 @@
     %th= "Login"
     %th= "E-mail"
     %th= "Role"
+    %th= "Locales"
+    %th= "Add locales"
   
   - for user in @users do
     %tr
       %td= user.login
       %td= user.email
       %td= user.role
+      
+      %td
+        - for locale in user.locales do
+          = locale.name
+          %br
+      %td
+        - form_for Traductor.new do |f|
+          = f.hidden_field :user_id, :value => user.id
+          = select( "traductor", "locale_id", Locale.find(:all).collect {|l| [ l.name, l.id ] })
+          = f.submit "Add"

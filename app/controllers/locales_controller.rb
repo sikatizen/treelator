@@ -3,7 +3,7 @@ class LocalesController < ApplicationController
   # GET /locales
   # GET /locales.xml
   def index
-    @locales = Locale.find(:all)
+    @locales = Locale.all
 
     respond_to do |format|
       format.html # index.html.erb

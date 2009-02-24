@@ -1,10 +1,48 @@
-.namespace
-  %span{ :class => @namespace == namespace ? "namespace_selected namespace_name" : "namespace_name"}
-    - unless namespace.sequence
-      = link_to namespace.name, translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
-    - else
-      = link_to "[#{namespace.name}]", translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
-  .namespace_children
-    - for child in namespace.children
-      - if child.namespace || child.sequence
+-#= padding
+-#.namespace
+-#  %span{ :class => @namespace == namespace ? "namespace_selected namespace_name" : "namespace_name"}
+-#    - unless namespace.sequence
+-#      = link_to namespace.name, translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
+-#    - else
+-#      = link_to "[#{namespace.name}]", translations_path(:locale_id => session[:locale].id, :namespace_id => namespace.id)
+-#  .namespace_children
+-#    - for child in namespace.children
+-#      - if child.namespace || child.sequence
+-#        = render :partial => "translations/namespace", :locals => { :namespace => child, :padding => padding +10 }
+
+-#%tr
+-#  %td= namespace.name
+-#  - for child in namespace.children
+-#    - if child.namespace
+-#      %td
+-#      %td
+-#      %td
+-#      = render :partial => "translations/namespace", :locals => { :namespace => child }
+-#    - else
+-#      %td= child.name
+-#      %td= child.find_translation_by_locale(1).value if child.find_translation_by_locale(1)
+-#      %td
+-#        - if child.find_translation_by_locale(session[:locale].id)
+-#          - form_for child.find_translation_by_locale(session[:locale].id) do |f|
+-#            = f.text_field :value, :value => child.find_translation_by_locale(session[:locale].id).value
+-#            = hidden_field_tag :namespace_id, namespace.id
+-#            = f.submit "Save"
+-#        - else
+-#          - form_for Translation.new do |f|
+-#            = f.text_field :value
+-#            = f.hidden_field :locale_id, :value => session[:locale].id
+-#            = f.hidden_field :key_id, :value => child.id
+-#            = hidden_field_tag :namespace_id, namespace.id
+-#            = f.submit "Save"
+
+.tr_namespace
+  .tr_namespace_name
+    = namespace.name
+  .tr_namespace_content
+    - for child in namespace.children do
+      - if child.namespace
         = render :partial => "translations/namespace", :locals => { :namespace => child }
+      - elsif child.sequence
+        = render :partial => "translations/sequence", :locals => { :sequence => child }
+      - else
+        = render :partial => "translations/key", :locals => { :key => child }

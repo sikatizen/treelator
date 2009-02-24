@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users
   map.resource :session
-
+  map.resource :traductors
   map.resources :translations
   map.resources :locales
   map.export "/export", :controller => "export"

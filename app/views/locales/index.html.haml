@@ -1,0 +1,20 @@
+%h1= "Listing locales"
+%table
+  %tr
+    %th="Iso code"
+    %th="Name"
+    %th= " "
+    %th="Users"
+  
+
+  - for locale in @locales 
+    %tr
+      %td=h locale.iso_code
+      %td=h locale.name
+      %td= link_to 'Edit', edit_locale_path(locale)
+      -#<!-- %td= link_to 'Destroy', locale, :confirm => 'Are you sure?', :method => :delete %> -->
+      %td
+        - for user in locale.users do
+          = user.name
+          %br
+= link_to 'Add a localisation', new_locale_path

@@ -40,6 +40,6 @@ class TranslationsController < ApplicationController
   end
   
   def authorized?
-    is_admin? || is_supervisor? || is_translator?
+    is_admin? || is_translator?
   end
 end

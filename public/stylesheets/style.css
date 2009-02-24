@@ -13,6 +13,16 @@
   cursor:pointer;
 }
 
+.tr_namespace{
+  padding-left:7px;
+  border-left: 1px dashed #aaa;
+}
+
+.tr_namespace_name{
+  font-size:14px;
+  font-weight:bold;
+}
+
 .key{
   
 }
