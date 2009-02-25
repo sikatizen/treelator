@@ -36,13 +36,13 @@
 -#            = f.submit "Save"
 
 .tr_namespace
-  .tr_namespace_name
+  %div{ :class => "tr_namespace_name", :onclick => "$('namespace_#{namespace.id}').toggle();"}
     = namespace.name
-  .tr_namespace_content
+  %div{ :id => "namespace_#{namespace.id}", :class => "tr_namespace_content", :style => "display:none"}  
     - for child in namespace.children do
       - if child.namespace
         = render :partial => "translations/namespace", :locals => { :namespace => child }
       - elsif child.sequence
         = render :partial => "translations/sequence", :locals => { :sequence => child }
       - else
-        = render :partial => "translations/key", :locals => { :key => child }
+        = render :partial => "translations/key", :locals => { :key => child, :namespace_id => child.id }

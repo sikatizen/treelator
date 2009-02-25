@@ -13,18 +13,36 @@
   cursor:pointer;
 }
 
-.tr_namespace{
+.tr_namespace, .tr_sequence, .tr_key{
   padding-left:7px;
   border-left: 1px dashed #aaa;
 }
 
 .tr_namespace_name{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.tr_sequence_name{
   font-size:14px;
   font-weight:bold;
 }
 
-.key{
-  
+.key_name{
+  font-size:12px;
+  font-style:italic;
+}
+
+.arrow{
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.key_value{
+  font-size:12px;
+}
+.tr_key form{
+  float:left;
 }
 
 #select_local a, #select_namespace a{
@@ -61,4 +79,7 @@
 
 #tr_left .namespace_children{
   padding-left:15px;
+}
+.clear{
+  clear:both;
 }

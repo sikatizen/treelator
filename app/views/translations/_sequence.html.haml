@@ -1,0 +1,7 @@
+.tr_sequence
+  %div{ :class => "tr_sequence_name", :onclick => "$('sequence_#{sequence.id}').toggle()"}
+    = "[#{sequence.name}]"
+    
+  %div{ :id => "sequence_#{sequence.id}", :class => "tr_sequence_content"}
+    - for child in sequence.children do
+      = render :partial => "translations/key", :locals => { :key => child, :namespace_id => sequence.id }
