@@ -3,7 +3,7 @@
     %b= namespace.name
     = link_to "edit", edit_key_path(namespace)
     = " | "
-    = link_to "Remove", namespace, :confirm => "are you sure ? All key in this name space will no longer be available.", :method => :delete
+    = link_to "Remove", namespace, :confirm => "are you sure ? All key in this namespace will no longer be available.", :method => :delete
     = " | "
     = link_to "Add a key", new_key_path( "key[parent_id]" => namespace.id)
     %hr
