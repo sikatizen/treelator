@@ -15,27 +15,34 @@ class TranslationsController < ApplicationController
 
   def create
     @translation = Translation.new(params[:translation])
-    respond_to do |format|
-      if @translation.save
-        flash[:notice] = 'Translation was successfully created.'
-        format.html { redirect_to translations_path( :namespace_id => params[:namespace_id], :locale_id => session[:locale_id]) }
-        format.xml  { render :xml => @translation, :status => :created, :location => @translation }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @translation.errors, :status => :unprocessable_entity }
-      end
+    @translation.save!
+    @key = Key.find(@translation.key_id)
+    
+    render :update do |page|
+      page.replace "key_#{@translation.key_id}", :partial => "translations/key", :locals => { :key => @key, :namespace_id => params[:namespace_id].to_i }
+      page << "$('key_#{@translation.key_id}').highlight();"
     end
+    
+    #respond_to do |format|
+    #  if @translation.save
+    #    flash[:notice] = 'Translation was successfully created.'
+    #    format.html { redirect_to translations_path( :namespace_id => params[:namespace_id], :locale_id => session[:locale_id]) }
+    #    format.xml  { render :xml => @translation, :status => :created, :location => @translation }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @translation.errors, :status => :unprocessable_entity }
+    #  end
+    #end
   end
   
   def update
     @translation = Translation.find(params[:id])
-
-    respond_to do |format|
-      if @translation.update_attributes(params[:translation])
-        format.html { redirect_to translations_path( :namespace_id => params[:namespace_id], :locale_id => session[:locale_id]) }
-      else
-        format.html { render :action => "edit" }
-      end
+    @namespace_id = params[:namespace_id].to_i
+    @key = Key.find(@translation.key_id)
+    @translation.update_attributes!(params[:translation])
+    render :update do |page|
+      page.replace "key_#{@translation.key_id}", :partial => "translations/key", :locals => { :key => @key, :namespace_id => @namespace_id }
+      page << "$('key_#{@translation.key_id}').highlight();"
     end
   end
   
