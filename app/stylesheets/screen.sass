@@ -1,0 +1,40 @@
+@import blueprint.sass
+@import blueprint/modules/scaffolding.sass
+@import compass/reset.sass
+
++blueprint
++blueprint-scaffolding
+
+@import base.sass
+@import namespace.sass
+
+h1
+  font-size = 20px
+  font-weight = 700
+  color = !font_color_2
+
+#header
+  +column(24)
+  :border-bottom = 1px solid !border_color_1
+  #header_links
+    +column(16)
+    .header_link
+      +left
+      :margin-right 20px
+  #login
+    +column(8, true)
+    +text_right
+      
+#select_local
+  :border-bottom = 1px solid !border_color_1
+  :margin-bottom 20px
+    
+#footer
+  :border-top = 1px solid !border_color_1
+  :margin-top 20px
+  #footer_text
+    +small
+    +text_center
+    
+
+      

@@ -5,7 +5,6 @@
     %span{ :class => session[:locale] == locale ? "local_selected" : ""}
       = link_to "#{locale.name}", translations_path(:locale_id => locale.id, :namespace_id => @namespace ? @namespace.id : nil)
     = " | "
-  %hr
 
 %p
   = "Every key is represented like this:"
