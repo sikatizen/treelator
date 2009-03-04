@@ -1182,3 +1182,6 @@ a {
     margin-bottom: 1.875em;
     line-height: 1.875em;
     text-align: center; }
+
+table.users td {
+  vertical-align: top; }

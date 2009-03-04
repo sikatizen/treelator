@@ -1,5 +1,5 @@
 = link_to "Add a user", signup_path
-%table
+%table{:class => 'users'}
   %tr
     %th= "Login"
     %th= "E-mail"
@@ -16,6 +16,8 @@
       %td
         - for locale in user.locales do
           = locale.name
+          - traductor = Traductor.first :conditions => {:user_id => user.id, :locale_id => locale.id}
+          = link_to 'remove', traductor, :confirm => 'Are you sure?', :method => :delete, :style => 'padding-left: 5px;'
           %br
       %td
         - form_for Traductor.new do |f|
