@@ -7,6 +7,11 @@ class LoadFromYaml < ActiveRecord::Migration
     hash = YAML.load(file)
     import_hash(hash.values_at(locale.iso_code).first)
     
+    file = File.new("#{LOCALES_DIRECTORY}/ce.yml")
+    hash = YAML.load(file)
+    import_hash(hash)
+    
+    
     namespace = Key.find(:first, :conditions => { :name => "date", :namespace => true })
     day_names = Key.create!( :sequence => true, :name => "day_names", :parent_id => namespace.id )
     abbr_day_names = Key.create!( :sequence => true, :name => "abbr_day_names", :parent_id => namespace.id )
