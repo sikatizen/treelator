@@ -1078,15 +1078,22 @@ table {
   font-weight: bold; }
 
 .key_name {
+  float: left;
   font-size: 12px;
-  font-style: italic; }
-
-.arrow {
-  padding-left: 5px;
-  padding-right: 5px; }
+  width: 200px; }
 
 .key_value {
-  font-size: 12px; }
+  float: left;
+  font-size: 12px;
+  font-weight: 700;
+  width: 300px; }
+
+.key_translate {
+  float: left;
+  width: 330px; }
+
+.tr_key {
+  border-bottom: 1px solid #CCC; }
 
 .tr_key form {
   float: left; }
@@ -1123,8 +1130,7 @@ table {
 
 h1 {
   font-size: 20px;
-  font-weight: 700;
-  color: #007777; }
+  font-weight: 700; }
 
 #header {
   float: left;

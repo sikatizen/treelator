@@ -1,20 +1,18 @@
 %div{ :id => "key_#{key.id}", :class => "tr_key" }
-  %table
-    %tr
-      %td.key_name= key.name
-      %td.arrow= " => "
-      %td.key_value= key.find_translation_by_locale(1).value if key.find_translation_by_locale(1)
-      %td
-        - if key.find_translation_by_locale(session[:locale].id)
-          - form_remote_for key.find_translation_by_locale(session[:locale].id) do |f|
-            = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value
-            = hidden_field_tag :namespace_id, namespace_id
-            = f.submit "Save"
-        - else
-          - form_remote_for Translation.new do |f|
-            = f.text_field :value
-            = f.hidden_field :locale_id, :value => session[:locale].id
-            = f.hidden_field :key_id, :value => key.id
-            = hidden_field_tag :namespace_id, namespace_id
-            = f.submit "Save"
+  .key_value= key.find_translation_by_locale(1).value if key.find_translation_by_locale(1)
+  .key_name= "(key: #{key.name})"
+  .key_translate
+    - if key.find_translation_by_locale(session[:locale].id)
+      - form_remote_for key.find_translation_by_locale(session[:locale].id) do |f|
+        = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value
+        = hidden_field_tag :namespace_id, namespace_id
+        = f.submit "Save"
+    - else
+      - form_remote_for Translation.new do |f|
+        = f.text_field :value
+        = f.hidden_field :locale_id, :value => session[:locale].id
+        = f.hidden_field :key_id, :value => key.id
+        = hidden_field_tag :namespace_id, namespace_id
+        = f.submit "Save"
+  .clear
 .clear
