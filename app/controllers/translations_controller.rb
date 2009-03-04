@@ -3,11 +3,21 @@ class TranslationsController < ApplicationController
   # GET /translations
   # GET /translations.xml
   def index
+    
+    if params[:main_language_id] != nil || params[:main_language_id] != ''
+      session[:main_language_id] = params[:main_language_id]
+    end
+      
     @locales = Locale.all
+    
+    @locales_array = Array.new
+    @locales.each{ |locale| @locales_array << [locale.name, locale.id]}
+    
     @keys = Key.find_key_without_parent
-    params[:namespace_id] ? @namespace = Key.find(params[:namespace_id].to_i) : nil
+    # params[:namespace_id] ? @namespace = Key.find(params[:namespace_id].to_i) : nil
     @namespaces = Key.find_root_namespaces
     @sequences = Key.find_sequences
+    
     respond_to do |format|
       format.html
     end

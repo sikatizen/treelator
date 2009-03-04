@@ -1,19 +1,23 @@
 #select_local
-  %b= "Select a Locale: "
-  %br
-  - for locale in @locales do
-    %span{ :class => session[:locale] == locale ? "local_selected" : ""}
-      = link_to "#{locale.name}", translations_path(:locale_id => locale.id, :namespace_id => @namespace ? @namespace.id : nil)
-    = " | "
-
+  - form_tag translations_path, :method => :get do
+    -#= hidden_field_tag :namespace_id, @namespace ? @namespace.id : nil
+    #choice_language
+      .label= label_tag :main_language_id, 'Main language: '
+      .field= select_tag(:main_language_id, options_for_select(@locales_array, session[:main_language_id].to_i))
+      .clear
+      .label= label_tag :locale_id, 'Translate language: '
+      .field= select_tag(:locale_id, options_for_select(@locales_array, session[:locale].id))
+      .clear
+      .label= ' '
+      .field{:style=>'padding-top: 3px'}= submit_tag 'Change'
+      .clear
 %p
   = "Every key is represented like this:"
-  %i= "key"
-  = "=> english translation"
+  %b= "main language translation"
+  = "(key: the key)"
   = text_field_tag "null", {},:value => "selected locale translation"
 - for namespace in @namespaces do
   = render :partial => "translations/namespace", :locals => { :namespace => namespace }
-  
   
   -#%b= "Select a namespace"
   -#%br

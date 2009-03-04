@@ -12,9 +12,15 @@ h1
   font-size = 20px
   font-weight = 700
 
+a
+  :color blue
+  &:visited
+    :color blue
+    
 #header
   +column(24)
   :border-bottom = 1px "solid" !border_color_1
+  :margin-bottom 10px
   #header_links
     +column(16)
     .header_link
@@ -26,7 +32,17 @@ h1
       
 #select_local
   :border-bottom = 1px "solid" !border_color_1
-  :margin-bottom 20px
+  :margin-bottom 15px
+  :padding-top 15px
+  :padding-bottom 15px
+  #choice_language
+    .label
+      +left
+      :width 120px
+      :padding-top 4px
+    .field
+      +left
+      :width 100px
     
 #footer
   :border-top = 1px "solid" !border_color_1

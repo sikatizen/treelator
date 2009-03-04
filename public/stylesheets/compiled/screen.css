@@ -1054,14 +1054,19 @@ table {
 
 .namespace {
   width: 500px;
-  border-left: 2px dashed #aaaaaa;
-  padding-left: 3px; }
+  border-left: 3px solid #aaaaaa;
+  padding-left: 3px;
+  border-bottom: 1px solid #aaaaaa;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  width: 100%; }
 
 .namespace_children {
+  font-size: 14px;
   padding-left: 15px; }
 
 .namespace_name {
-  font-size: 22px;
+  font-size: 14px;
   cursor: pointer; }
 
 .tr_namespace, .tr_sequence, .tr_key {
@@ -1093,7 +1098,7 @@ table {
   width: 330px; }
 
 .tr_key {
-  border-bottom: 1px solid #CCC; }
+  border-bottom: 1px solid #aaaaaa; }
 
 .tr_key form {
   float: left; }
@@ -1132,11 +1137,17 @@ h1 {
   font-size: 20px;
   font-weight: 700; }
 
+a {
+  color: blue; }
+  a:visited {
+    color: blue; }
+
 #header {
   float: left;
   width: 950px;
   margin-right: 10px;
-  border-bottom: 1px solid #cccccc; }
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 10px; }
   #header #header_links {
     float: left;
     width: 630px;
@@ -1152,7 +1163,16 @@ h1 {
 
 #select_local {
   border-bottom: 1px solid #cccccc;
-  margin-bottom: 20px; }
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+  #select_local #choice_language .label {
+    float: left;
+    width: 120px;
+    padding-top: 4px; }
+  #select_local #choice_language .field {
+    float: left;
+    width: 100px; }
 
 #footer {
   border-top: 1px solid #cccccc;

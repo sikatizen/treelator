@@ -1,18 +1,23 @@
 .namespace
   :width 500px
-  :border-left = 2px "dashed" #aaa
+  :border-left = 3px "solid" !border_color_2
   :padding-left 3px
+  :border-bottom = 1px "solid" !border_color_2
+  :padding-top 5px
+  :padding-bottom 2px
+  :width 100%
 
 .namespace_children
+  :font-size 14px
   :padding-left 15px
 
 .namespace_name
-  :font-size 22px
+  :font-size 14px
   :cursor pointer
 
 .tr_namespace, .tr_sequence, .tr_key
   :padding-left 7px
-  :border-left = 3px "solid" #aaa
+  :border-left = 3px "solid" !border_color_2
 
 .tr_namespace_name
   :font-size 18px
@@ -39,7 +44,7 @@
   :width 330px
 
 .tr_key
-  :border-bottom 1px solid #CCC
+  :border-bottom = 1px solid !border_color_2
 
 .tr_key form
   :float left
@@ -64,7 +69,7 @@
   :width 800px
 
 #tr_left .namespace
-  :border-left = 2px "dashed" #aaa
+  :border-left = 2px "dashed" !border_color_2
   :padding-left 3px
 
 #tr_left .namespace_name
