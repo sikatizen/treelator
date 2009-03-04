@@ -1137,7 +1137,7 @@ body {
   background: #BBB; }
 
 .container {
-  border: 1px solid #777;
+  border: 1px solid #666;
   background: #FFF; }
   .container #content #content_center {
     padding: 15px; }
@@ -1215,8 +1215,8 @@ a {
   margin-top: 20px;
   padding-bottom: 5px; }
   #footer #footer_text {
-    font-size: .8em;
-    line-height: 1.875em;
+    font-size: 10px;
+    line-height: 2em;
     text-align: center; }
 
 table.users td {
