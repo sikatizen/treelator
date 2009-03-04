@@ -1133,6 +1133,14 @@ table {
 #tr_left .namespace_children {
   padding-left: 15px; }
 
+body {
+  background: #BBB; }
+
+.container {
+  background: #FFF; }
+  .container #content #content_center {
+    padding: 15px; }
+
 h1 {
   font-size: 20px;
   font-weight: 700; }
@@ -1143,23 +1151,49 @@ a {
     color: blue; }
 
 #header {
+  background: #EEE;
+  height: 120px;
   float: left;
   width: 950px;
   margin-right: 10px;
   border-bottom: 1px solid #cccccc;
   margin-bottom: 10px; }
-  #header #header_links {
-    float: left;
-    width: 630px;
-    margin-right: 10px; }
-    #header #header_links .header_link {
-      float: left;
-      margin-right: 20px; }
-  #header #login {
-    float: left;
-    width: 310px;
-    margin-right: 0;
-    text-align: right; }
+  #header #title {
+    height: 80px; }
+    #header #title #title_text {
+      color: #666666;
+      padding: 5px 15px 5px 15px;
+      font-size: 46px;
+      font-family: "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif;
+      font-style: italic;
+      font-weight: 700; }
+  #header #menu {
+    height: 40px;
+    background: url(./../../images/menu.jpg) no-repeat left top;
+    color: white; }
+    #header #menu #menu_text {
+      padding: 10px 15px 0px 15px; }
+      #header #menu #menu_text a {
+        color: white;
+        font-weight: 700;
+        text-decoration: none; }
+        #header #menu #menu_text a:hover {
+          text-decoration: underline; }
+        #header #menu #menu_text a:visited {
+          color: white;
+          font-weight: 700; }
+      #header #menu #menu_text #header_links {
+        float: left;
+        width: 630px;
+        margin-right: 10px; }
+        #header #menu #menu_text #header_links .header_link {
+          float: left;
+          margin-right: 20px; }
+      #header #menu #menu_text #login {
+        float: left;
+        width: 270px;
+        margin-right: 0;
+        text-align: right; }
 
 #select_local {
   border-bottom: 1px solid #cccccc;
@@ -1175,11 +1209,12 @@ a {
     width: 100px; }
 
 #footer {
+  background: #EEE;
   border-top: 1px solid #cccccc;
-  margin-top: 20px; }
+  margin-top: 20px;
+  padding-bottom: 5px; }
   #footer #footer_text {
     font-size: .8em;
-    margin-bottom: 1.875em;
     line-height: 1.875em;
     text-align: center; }
 

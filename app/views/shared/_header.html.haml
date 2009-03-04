@@ -1,20 +1,24 @@
 #header
-  #header_links
-    - if is_translator?
-      .header_link
-        = link_to "Translations", translations_path
-    - if is_admin?
-      .header_link  
-        = link_to "Locales", locales_path
-      .header_link
-        = link_to "Keys and namespaces", keys_path
-      .header_link
-        = link_to "Export", export_path
-      .header_link
-        = link_to "Users", users_path
-  #login
-    - if logged_in?
-      = "Logged in as #{current_user.login} | "
-      = link_to "Logout", logout_path
-    - else
-      = link_to "Login", login_path
+  #title
+    #title_text= "Sikalator"
+  #menu
+    #menu_text
+      #header_links
+        - if is_translator?
+          .header_link
+            = link_to "Translations", translations_path
+        - if is_admin?
+          .header_link  
+            = link_to "Locales", locales_path
+          .header_link
+            = link_to "Keys and namespaces", keys_path
+          .header_link
+            = link_to "Export", export_path
+          .header_link
+            = link_to "Users", users_path
+      #login
+        - if logged_in?
+          = "Logged in as #{current_user.login} | "
+          = link_to "Logout", logout_path
+        - else
+          = link_to "Login", login_path

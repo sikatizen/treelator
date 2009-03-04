@@ -8,27 +8,62 @@
 @import base.sass
 @import namespace.sass
 
+body
+  // :background #28313A
+  :background #BBB
+
+.container
+  :background #FFF
+  #content
+    #content_center
+      :padding 15px
 h1
-  font-size = 20px
-  font-weight = 700
+  :font-size 20px
+  :font-weight 700
 
 a
   :color blue
   &:visited
     :color blue
-    
+
 #header
+  :background #EEE
+  :height 120px
   +column(24)
   :border-bottom = 1px "solid" !border_color_1
   :margin-bottom 10px
-  #header_links
-    +column(16)
-    .header_link
-      +left
-      :margin-right 20px
-  #login
-    +column(8, true)
-    +text_right
+  #title
+    :height 80px
+    #title_text
+      :color #666666
+      :padding 5px 15px 5px 15px
+      :font-size 46px
+      :font-family "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif
+      :font-style italic
+      :font-weight 700
+  #menu
+    :height 40px
+    :background url(./../../images/menu.jpg) no-repeat left top
+    :color white
+    #menu_text
+      :padding 10px 15px 0px 15px
+      a
+        :color white
+        :font-weight 700
+        :text-decoration none
+        &:hover
+          :text-decoration underline
+        &:visited
+          :color white
+          :font-weight 700
+      #header_links
+        +column(16)
+        .header_link
+          +left
+          :margin-right 20px
+      #login
+        +column(7, true)
+        +text_right
       
 #select_local
   :border-bottom = 1px "solid" !border_color_1
@@ -45,8 +80,10 @@ a
       :width 100px
     
 #footer
+  :background #EEE
   :border-top = 1px "solid" !border_color_1
   :margin-top 20px
+  :padding-bottom 5px
   #footer_text
     +small
     +text_center
