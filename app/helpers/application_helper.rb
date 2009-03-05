@@ -19,7 +19,7 @@ module ApplicationHelper
   
   
   def display_key(key)
-    html= "#{key.name}"
+    html= "<b>#{key.name}</b>"
     html += " | "
     html += (link_to "edit", edit_key_path(key))
     html += " | "

@@ -1,0 +1,99 @@
+@import blueprint.sass
+@import blueprint/modules/scaffolding.sass
+@import compass/reset.sass
+
++blueprint
++blueprint-scaffolding
+
+@import base.sass
+@import namespace.sass
+
+body
+  :background #BBB
+
+.container
+  :border = 1px "solid" #666
+  :background #FFF
+  #content
+    #content_center
+      :padding 15px
+h1
+  :font-size 20px
+  :font-weight 700
+
+a
+  :color = !link_color_1
+  &:visited
+    :color = !link_color_1
+    
+th
+  :background = !table_header_background_color_1
+
+#header
+  :background #EEE
+  :height 120px
+  +column(24)
+  :border-bottom = 1px "solid" !border_color_1
+  :margin-bottom 10px
+  #title
+    :height 80px
+    #title_text
+      :color #666666
+      :padding 5px 15px 5px 15px
+      :font-size 46px
+      :font-family "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif
+      :font-style italic
+      :font-weight 700
+  #menu
+    :height 40px
+    :background url(./../../images/menu.jpg) no-repeat left top
+    :color white
+    #menu_text
+      :padding 10px 15px 0px 15px
+      a
+        :color white
+        :font-weight 700
+        :text-decoration none
+        &:hover
+          :text-decoration underline
+        &:visited
+          :color white
+          :font-weight 700
+      #header_links
+        +column(16)
+        .header_link
+          +left
+          :margin-right 20px
+      #logout
+        +column(7, true)
+        +text_right
+      
+#select_local
+  :border-bottom = 1px "solid" !border_color_1
+  :margin-bottom 15px
+  :padding-top 15px
+  :padding-bottom 15px
+  #choice_language
+    .label
+      +left
+      :padding-right 10px
+      :padding-top 4px
+    .field
+      :padding-right 20px
+      +left
+    
+#footer
+  :background #EEE
+  :border-top = 1px "solid" !border_color_1
+  :margin-top 20px
+  :padding-bottom 5px
+  #footer_text
+    +small
+    +text_center
+    
+
+table.users
+  td
+    :vertical-align top
+  
+

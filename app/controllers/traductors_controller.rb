@@ -16,10 +16,13 @@ class TraductorsController < ApplicationController
   end
   
   def destroy
-    
+    @traductor = Traductor.find(params[:id])
+    @traductor.destroy
+    redirect_to(users_url)
   end
   
   def authorized?
     is_admin?
   end
+  
 end
