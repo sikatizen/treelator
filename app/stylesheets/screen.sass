@@ -9,11 +9,10 @@
 @import namespace.sass
 
 body
-  // :background #28313A
   :background #BBB
 
 .container
-  :border 1px solid #666
+  :border 1px "solid" #666
   :background #FFF
   #content
     #content_center
@@ -23,9 +22,12 @@ h1
   :font-weight 700
 
 a
-  :color blue
+  :color = !link_color_1
   &:visited
-    :color blue
+    :color = !link_color_1
+    
+th
+  :background = !table_header_background_color_1
 
 #header
   :background #EEE
@@ -62,7 +64,7 @@ a
         .header_link
           +left
           :margin-right 20px
-      #login
+      #logout
         +column(7, true)
         +text_right
       
@@ -74,11 +76,11 @@ a
   #choice_language
     .label
       +left
-      :width 120px
+      :padding-right 10px
       :padding-top 4px
     .field
+      :padding-right 20px
       +left
-      :width 100px
     
 #footer
   :background #EEE

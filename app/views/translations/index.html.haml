@@ -4,11 +4,8 @@
     #choice_language
       .label= label_tag :main_language_id, 'Main language: '
       .field= select_tag(:main_language_id, options_for_select(@locales_array, session[:main_language_id].to_i))
-      .clear
       .label= label_tag :locale_id, 'Translate language: '
       .field= select_tag(:locale_id, options_for_select(@locales_array, session[:locale].id))
-      .clear
-      .label= ' '
       .field{:style=>'padding-top: 3px'}= submit_tag 'Change'
       .clear
 %p

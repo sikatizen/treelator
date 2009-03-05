@@ -4,11 +4,15 @@ class TranslationsController < ApplicationController
   # GET /translations.xml
   def index
     
-    if params[:main_language_id] != nil || params[:main_language_id] != ''
+    if params[:main_language_id] != nil && params[:main_language_id] != ''
       session[:main_language_id] = params[:main_language_id]
     end
-      
+    
     @locales = Locale.all
+    
+    if session[:main_language_id] == nil || session[:main_language_id] == ''
+      session[:main_language_id] = @locales.first.id
+    end
     
     @locales_array = Array.new
     @locales.each{ |locale| @locales_array << [locale.name, locale.id]}

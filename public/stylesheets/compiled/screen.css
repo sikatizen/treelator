@@ -1137,7 +1137,7 @@ body {
   background: #BBB; }
 
 .container {
-  border: 1px solid #666;
+  border: 1px "solid" #666;
   background: #FFF; }
   .container #content #content_center {
     padding: 15px; }
@@ -1147,9 +1147,12 @@ h1 {
   font-weight: 700; }
 
 a {
-  color: blue; }
+  color: #005577; }
   a:visited {
-    color: blue; }
+    color: #005577; }
+
+th {
+  background: #99ccee; }
 
 #header {
   background: #EEE;
@@ -1190,7 +1193,7 @@ a {
         #header #menu #menu_text #header_links .header_link {
           float: left;
           margin-right: 20px; }
-      #header #menu #menu_text #login {
+      #header #menu #menu_text #logout {
         float: left;
         width: 270px;
         margin-right: 0;
@@ -1203,11 +1206,11 @@ a {
   padding-bottom: 15px; }
   #select_local #choice_language .label {
     float: left;
-    width: 120px;
+    padding-right: 10px;
     padding-top: 4px; }
   #select_local #choice_language .field {
-    float: left;
-    width: 100px; }
+    padding-right: 20px;
+    float: left; }
 
 #footer {
   background: #EEE;

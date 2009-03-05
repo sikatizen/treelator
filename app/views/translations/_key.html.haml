@@ -3,7 +3,7 @@
     - if key.find_translation_by_locale(session[:main_language_id])
       = key.find_translation_by_locale(session[:main_language_id]).value
     - else
-      = "<em>no translation into the main language</em>"
+      = "<em>no translation in main language</em>"
   .key_name= "(key: #{key.name})"
   .key_translate
     - if key.find_translation_by_locale(session[:locale].id)
