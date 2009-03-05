@@ -13,9 +13,13 @@
           .header_link
             = link_to "Keys and namespaces", keys_path
           .header_link
+            = link_to "Users", users_path
+          .header_link
             = link_to "Export", export_path
           .header_link
-            = link_to "Users", users_path      
+            = link_to "Import", import_translations_path
+          .header_link
+            = link_to "Statistics", statistics_keys_path
       - if logged_in?
         #logout
           = "Logged in as #{current_user.login} | "

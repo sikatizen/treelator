@@ -84,6 +84,17 @@ class KeysController < ApplicationController
     end
   end
   
+  def statistics
+    @translations_status = Array.new
+    
+    Locale.all.each { |locale|
+      
+      nbr_all_key = Key.count(:conditions => { :namespace => false, :sequence => false})
+      nbr_translated_key = Translation.count :conditions => { :locale_id => locale.id }
+      @translations_status << { :locale_name => locale.name, :iso_code => locale.iso_code, :nbr_translated_key => nbr_translated_key, :nbr_all_key => nbr_all_key }
+    }
+  end
+  
   def authorized?
     is_admin?
   end
