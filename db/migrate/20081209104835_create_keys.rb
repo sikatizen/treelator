@@ -1,6 +1,6 @@
 class CreateKeys < ActiveRecord::Migration
   def self.up
-    create_table :keys do |t|
+    create_table :keys, :options => 'DEFAULT CHARSET=utf8' do |t|
       t.string :name
       t.integer :parent_id
       t.boolean :namespace, :default => false
