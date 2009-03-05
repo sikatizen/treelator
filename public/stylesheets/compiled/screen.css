@@ -1137,7 +1137,7 @@ body {
   background: #BBB; }
 
 .container {
-  border: 1px "solid" #666;
+  border: 1px solid #666666;
   background: #FFF; }
   .container #content #content_center {
     padding: 15px; }
