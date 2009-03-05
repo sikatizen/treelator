@@ -7,13 +7,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session
   map.resources :traductors
-  map.resources :translations
+  map.resources :translations, :collection => {:import => :get, :do_import => :post}
   map.resources :locales
   map.export "/export", :controller => "export"
   map.export_file "/export/export_file", :controller => "export", :action => "export_file"
   
   map.root :controller => "translations", :action => "index"
-  map.resources :keys
+  map.resources :keys, :collection => {:statistics => :get}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

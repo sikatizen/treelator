@@ -1,7 +1,7 @@
 %div{ :id => "key_#{key.id}", :class => "tr_key" }
   .key_value
-    - if key.find_translation_by_locale(session[:main_language_id])
-      = key.find_translation_by_locale(session[:main_language_id]).value
+    - if key.find_translation_by_locale(session[:main_language_id].to_i)
+      = key.find_translation_by_locale(session[:main_language_id].to_i).value
     - else
       = "<em>no translation in main language</em>"
   .key_name= "(key: #{key.name})"

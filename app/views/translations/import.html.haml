@@ -1,0 +1,18 @@
+%h1 Import YAML file
+- if flash[:error] != nil && flash[:error] != ''
+  .error= flash[:error]
+- if flash[:notice] != nil && flash[:notice] != ''
+  .notice= flash[:notice]
+- form_tag do_import_translations_path, :multipart => true do
+  %table
+    %tr
+      %td{:style=>'width: 60px;'}
+        %b= label :locale_id, 'Locale'
+      %td= select_tag :locale_id, options_from_collection_for_select(Locale.find(:all), :id, :name)
+    %tr
+      %td
+        %b= label :file, 'File'
+      %td= file_field_tag :file
+    %tr
+      %td
+      %td= submit_tag "Import"

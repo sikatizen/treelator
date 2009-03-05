@@ -60,6 +60,35 @@ class TranslationsController < ApplicationController
     end
   end
   
+  def import
+    
+  end
+  
+  def do_import
+    locale = Locale.find(params[:locale_id])
+    
+    if params['file'] == nil || params['file'] == ''
+      flash[:error] = "No file"
+      render :action => 'import' and return
+    end
+    
+    hash = YAML.load(params['file'].read)
+    
+    p "<<<"
+    p hash.values_at(locale.iso_code).first
+    p locale.iso_code
+    
+    if hash[locale.iso_code] == nil || hash[locale.iso_code] == ''
+      flash[:error] = "The language file is not the same as the selected language"
+      render :action => 'import' and return
+    end
+    
+    import_hash(hash.values_at(locale.iso_code).first, 0, locale.id)
+    
+    flash[:notice] = "Importation done"
+    redirect_to :action => 'import'
+  end
+  
   def authorized?
     is_admin? || is_translator?
   end
