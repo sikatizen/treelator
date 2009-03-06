@@ -14,7 +14,6 @@ class CreateUsers < ActiveRecord::Migration
 
     end
     add_index :users, :login, :unique => true
-    User.create!( "password_confirmation"=>"calame", "role"=>"admin", "password"=>"calame", "login"=>"admin", "email"=>"jonathan.biolaz@sikatizen.com")
   end
 
   def self.down

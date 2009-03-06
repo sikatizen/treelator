@@ -1,4 +1,4 @@
-module SikalatorLib
+module TreelatorLib
   
   protected
 

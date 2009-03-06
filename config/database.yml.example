@@ -1,14 +1,14 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: sikalator_dev
+  database: treelator_dev
   username: root
   password:
   socket: /tmp/mysql.sock
 test:
   adapter: mysql
   encoding: utf8
-  database: sikalator_test
+  database: treelator_test
   username: root
   password:
   socket: /tmp/mysql.sock

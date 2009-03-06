@@ -1,6 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  include SikalatorLib
+  include TreelatorLib
   def display_namespaces(key, padding=0)
     html = "<div style=\"padding-left:#{padding}px\">"
     if key.children.empty? && key.namespace == true
