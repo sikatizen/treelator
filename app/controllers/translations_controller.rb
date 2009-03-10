@@ -37,16 +37,6 @@ class TranslationsController < ApplicationController
       page << "$('key_#{@translation.key_id}').highlight();"
     end
     
-    #respond_to do |format|
-    #  if @translation.save
-    #    flash[:notice] = 'Translation was successfully created.'
-    #    format.html { redirect_to translations_path( :namespace_id => params[:namespace_id], :locale_id => session[:locale_id]) }
-    #    format.xml  { render :xml => @translation, :status => :created, :location => @translation }
-    #  else
-    #    format.html { render :action => "new" }
-    #    format.xml  { render :xml => @translation.errors, :status => :unprocessable_entity }
-    #  end
-    #end
   end
   
   def update
@@ -73,11 +63,7 @@ class TranslationsController < ApplicationController
     end
     
     hash = YAML.load(params['file'].read)
-    
-    p "<<<"
-    p hash.values_at(locale.iso_code).first
-    p locale.iso_code
-    
+
     if hash[locale.iso_code] == nil || hash[locale.iso_code] == ''
       flash[:error] = "The language file is not the same as the selected language"
       render :action => 'import' and return

@@ -30,7 +30,18 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    @user = User.find(params[:id])
+    if params[:id].to_i != 1
+      @user.destroy
+      flash[:notice] = "User Removed"
+    else
+      flash[:error] = "You can't remove the first user !"
+    end
     
+    respond_to do |format|
+      format.html { redirect_to(users_path) }
+      format.xml  { head :ok }
+    end
   end
   
   def edit
@@ -47,5 +58,9 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
+  end
+  
+  def authorized?
+    is_admin?
   end
 end
