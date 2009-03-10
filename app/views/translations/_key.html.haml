@@ -8,7 +8,7 @@
   .key_translate
     - if key.find_translation_by_locale(session[:locale].id)
       - form_remote_for key.find_translation_by_locale(session[:locale].id) do |f|
-        = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value, :onchange => "$('save_#{key.id}').show();"
+        = f.text_field :value, :value => key.find_translation_by_locale(session[:locale].id).value, :onchange => "$('save_#{key.id}').show();$('key_#{key.id}').addClassName('tr_orange')"
         = hidden_field_tag :namespace_id, namespace_id
         %span{ :id => "save_#{key.id}", :style => "display:none"}
           = f.submit "Save"

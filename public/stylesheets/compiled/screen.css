@@ -1103,6 +1103,9 @@ table {
 .tr_key form {
   float: left; }
 
+.tr_orange {
+  background-color: #ff5f41; }
+
 #select_local a, #select_namespace a {
   text-decoration: none;
   color: black; }
