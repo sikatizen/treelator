@@ -28,4 +28,24 @@ class UsersController < ApplicationController
   def authorized?
     is_admin?
   end
+  
+  def destroy
+    
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        flash[:notice] = 'User was successfully updated.'
+        format.html { redirect_to users_path }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
 end

@@ -6,6 +6,8 @@
     %th= "Role"
     %th= "Locales"
     %th= "Add locales"
+    %th= "#"
+    %th= "#"
   
   - for user in @users do
     %tr
@@ -24,3 +26,5 @@
           = f.hidden_field :user_id, :value => user.id
           = select( "traductor", "locale_id", Locale.find(:all).collect {|l| [ l.name, l.id ] })
           = f.submit "Add"
+      %td= link_to "edit", edit_user_path(user) 
+      %td= link_to "remove", user, :method => "delete", :confirmation => "Are you sure ?"
