@@ -14,7 +14,7 @@
           = f.submit "Save"
     - else
       - form_remote_for Translation.new do |f|
-        = f.text_field :value, :onchange => "$('save_#{key.id}').show();"
+        = f.text_field :value, :onchange => "$('save_#{key.id}').show();$('key_#{key.id}').addClassName('tr_orange')"
         = f.hidden_field :locale_id, :value => session[:locale].id
         = f.hidden_field :key_id, :value => key.id
         = hidden_field_tag :namespace_id, namespace_id
