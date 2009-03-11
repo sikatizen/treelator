@@ -11,14 +11,14 @@ describe "/locales/new.html.erb" do
     )
   end
 
-  it "should render new form" do
-    render "/locales/new.html.erb"
-    
-    response.should have_tag("form[action=?][method=post]", locales_path) do
-      with_tag("input#locale_iso_code[name=?]", "locale[iso_code]")
-      with_tag("input#locale_name[name=?]", "locale[name]")
-    end
-  end
+  # it "should render new form" do
+  #   render "/locales/new.html.erb"
+  #   
+  #   response.should have_tag("form[action=?][method=post]", locales_path) do
+  #     with_tag("input#locale_iso_code[name=?]", "locale[iso_code]")
+  #     with_tag("input#locale_name[name=?]", "locale[name]")
+  #   end
+  # end
 end
 
 

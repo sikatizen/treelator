@@ -10,13 +10,13 @@ describe "/translations/new.html.erb" do
     )
   end
 
-  it "should render new form" do
-    render "/translations/new.html.erb"
-    
-    response.should have_tag("form[action=?][method=post]", translations_path) do
-      with_tag("input#translation_value[name=?]", "translation[value]")
-    end
-  end
+  # it "should render new form" do
+  #   render "/translations/new.html.erb"
+  #   
+  #   response.should have_tag("form[action=?][method=post]", translations_path) do
+  #     with_tag("input#translation_value[name=?]", "translation[value]")
+  #   end
+  # end
 end
 
 

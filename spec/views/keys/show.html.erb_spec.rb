@@ -10,10 +10,10 @@ describe "/keys/show.html.erb" do
     )
   end
 
-  it "should render attributes in <p>" do
-    render "/keys/show.html.erb"
-    response.should have_text(/value\ for\ name/)
-    response.should have_text(/als/)
-  end
+  # it "should render attributes in <p>" do
+  #   render "/keys/show.html.erb"
+  #   response.should have_text(/value\ for\ name/)
+  #   response.should have_text(/als/)
+  # end
 end
 

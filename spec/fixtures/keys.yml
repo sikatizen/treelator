@@ -15,12 +15,16 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  parent_id: 1
-  namespace: false
+root:
+  name: namespace_root
+  parent_id: 0
+  namespace: true
+  is_string: false
 
-two:
-  name: MyString
-  parent_id: 1
+child_one:
+  name: child_one
+  parent_id: root
   namespace: false
+  is_string: false
+  
+  

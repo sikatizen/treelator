@@ -37,7 +37,7 @@ class KeysController < ApplicationController
       when 'namespace'
         @key.is_string = false
         @key.namespace = true
-      when
+      when 'sequence'
         @key.sequence = true
     end
     
@@ -45,11 +45,9 @@ class KeysController < ApplicationController
       if @key.save
         flash[:notice] = 'Key was successfully created.'
         format.html { redirect_to keys_path }
-        format.xml  { render :xml => @key, :status => :created, :location => @key }
       else
         @namespaces = Key.find_namespaces
         format.html { render :action => "new" }
-        format.xml  { render :xml => @key.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +61,9 @@ class KeysController < ApplicationController
       if @key.update_attributes(params[:key])
         flash[:notice] = 'Key was successfully updated.'
         format.html { redirect_to keys_path}
-        format.xml  { head :ok }
       else
         @namespaces = Key.find_namespaces
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @key.errors, :status => :unprocessable_entity }
       end
     end
   end

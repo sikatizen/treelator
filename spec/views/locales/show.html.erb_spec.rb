@@ -10,10 +10,10 @@ describe "/locales/show.html.erb" do
     )
   end
 
-  it "should render attributes in <p>" do
-    render "/locales/show.html.erb"
-    response.should have_text(/value\ for\ iso_code/)
-    response.should have_text(/value\ for\ name/)
-  end
+  # it "should render attributes in <p>" do
+  #   render "/locales/show.html.erb"
+  #   response.should have_text(/value\ for\ iso_code/)
+  #   response.should have_text(/value\ for\ name/)
+  # end
 end
 

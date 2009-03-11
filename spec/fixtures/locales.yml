@@ -12,10 +12,10 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  iso_code: MyString
-  name: MyString
+english:
+  iso_code: en-US
+  name: English
 
-two:
-  iso_code: MyString
-  name: MyString
+francais:
+  iso_code: fr-FR
+  name: Français

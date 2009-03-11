@@ -10,15 +10,15 @@ describe "/keys/edit.html.erb" do
       :namespace => false
     )
   end
-
-  it "should render edit form" do
-    render "/keys/edit.html.erb"
-    
-    response.should have_tag("form[action=#{key_path(@key)}][method=post]") do
-      with_tag('input#key_name[name=?]', "key[name]")
-      with_tag('input#key_namespace[name=?]', "key[namespace]")
-    end
-  end
+  # 
+  # it "should render edit form" do
+  #   render "/keys/edit.html.erb"
+  #   
+  #   response.should have_tag("form[action=#{key_path(@key)}][method=post]") do
+  #     with_tag('input#key_name[name=?]', "key[name]")
+  #     with_tag('input#key_namespace[name=?]', "key[namespace]")
+  #   end
+  # end
 end
 
 

@@ -17,4 +17,5 @@ module AuthenticatedTestHelper
       :errors => [])
     user
   end  
+  
 end

@@ -1,7 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-
+include AuthenticatedTestHelper
+include TreelatorTestHelper
 describe LocalesController do
-
+  fixtures :users, :locales
+  before(:each) do
+    login_as :admin
+    set_local :english
+  end
+  
   def mock_locale(stubs={})
     @mock_locale ||= mock_model(Locale, stubs)
   end
@@ -14,40 +20,6 @@ describe LocalesController do
       assigns[:locales].should == [mock_locale]
     end
 
-    describe "with mime type of xml" do
-  
-      it "should render all locales as xml" do
-        request.env["HTTP_ACCEPT"] = "application/xml"
-        Locale.should_receive(:find).with(:all).and_return(locales = mock("Array of Locales"))
-        locales.should_receive(:to_xml).and_return("generated XML")
-        get :index
-        response.body.should == "generated XML"
-      end
-    
-    end
-
-  end
-
-  describe "responding to GET show" do
-
-    it "should expose the requested locale as @locale" do
-      Locale.should_receive(:find).with("37").and_return(mock_locale)
-      get :show, :id => "37"
-      assigns[:locale].should equal(mock_locale)
-    end
-    
-    describe "with mime type of xml" do
-
-      it "should render the requested locale as xml" do
-        request.env["HTTP_ACCEPT"] = "application/xml"
-        Locale.should_receive(:find).with("37").and_return(mock_locale)
-        mock_locale.should_receive(:to_xml).and_return("generated XML")
-        get :show, :id => "37"
-        response.body.should == "generated XML"
-      end
-
-    end
-    
   end
 
   describe "responding to GET new" do
@@ -83,7 +55,7 @@ describe LocalesController do
       it "should redirect to the created locale" do
         Locale.stub!(:new).and_return(mock_locale(:save => true))
         post :create, :locale => {}
-        response.should redirect_to(locale_url(mock_locale))
+        response.should redirect_to(locales_url)
       end
       
     end
@@ -106,7 +78,7 @@ describe LocalesController do
     
   end
 
-  describe "responding to PUT udpate" do
+  describe "responding to PUT update" do
 
     describe "with valid params" do
 
@@ -122,10 +94,10 @@ describe LocalesController do
         assigns(:locale).should equal(mock_locale)
       end
 
-      it "should redirect to the locale" do
+      it "should redirect to the locales path" do
         Locale.stub!(:find).and_return(mock_locale(:update_attributes => true))
         put :update, :id => "1"
-        response.should redirect_to(locale_url(mock_locale))
+        response.should redirect_to(locales_url)
       end
 
     end

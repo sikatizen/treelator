@@ -1,7 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+include AuthenticatedTestHelper
 
 describe KeysController do
-
+  fixtures :users
+  
+  before(:each) do
+    login_as :admin
+  end
+  
   def mock_key(stubs={})
     @mock_key ||= mock_model(Key, stubs)
   end
@@ -9,51 +15,18 @@ describe KeysController do
   describe "responding to GET index" do
 
     it "should expose all keys as @keys" do
-      Key.should_receive(:find).with(:all).and_return([mock_key])
+      Key.should_receive(:find_key_without_parent).and_return([mock_key])
+      
       get :index
       assigns[:keys].should == [mock_key]
     end
-
-    describe "with mime type of xml" do
-  
-      it "should render all keys as xml" do
-        request.env["HTTP_ACCEPT"] = "application/xml"
-        Key.should_receive(:find).with(:all).and_return(keys = mock("Array of Keys"))
-        keys.should_receive(:to_xml).and_return("generated XML")
-        get :index
-        response.body.should == "generated XML"
-      end
-    
-    end
-
-  end
-
-  describe "responding to GET show" do
-
-    it "should expose the requested key as @key" do
-      Key.should_receive(:find).with("37").and_return(mock_key)
-      get :show, :id => "37"
-      assigns[:key].should equal(mock_key)
-    end
-    
-    describe "with mime type of xml" do
-
-      it "should render the requested key as xml" do
-        request.env["HTTP_ACCEPT"] = "application/xml"
-        Key.should_receive(:find).with("37").and_return(mock_key)
-        mock_key.should_receive(:to_xml).and_return("generated XML")
-        get :show, :id => "37"
-        response.body.should == "generated XML"
-      end
-
-    end
-    
   end
 
   describe "responding to GET new" do
   
     it "should expose a new key as @key" do
       Key.should_receive(:new).and_return(mock_key)
+      Key.should_receive(:find_namespaces)
       get :new
       assigns[:key].should equal(mock_key)
     end
@@ -64,6 +37,7 @@ describe KeysController do
   
     it "should expose the requested key as @key" do
       Key.should_receive(:find).with("37").and_return(mock_key)
+      Key.should_receive(:find_namespaces)
       get :edit, :id => "37"
       assigns[:key].should equal(mock_key)
     end
@@ -75,15 +49,15 @@ describe KeysController do
     describe "with valid params" do
       
       it "should expose a newly created key as @key" do
-        Key.should_receive(:new).with({'these' => 'params'}).and_return(mock_key(:save => true))
-        post :create, :key => {:these => 'params'}
+        Key.should_receive(:new).with({'name' => 'key', 'value' => 'key'}).and_return(mock_key(:save => true))
+        post :create, :key => {:name => 'key', 'value' => 'key'}
         assigns(:key).should equal(mock_key)
       end
 
       it "should redirect to the created key" do
         Key.stub!(:new).and_return(mock_key(:save => true))
         post :create, :key => {}
-        response.should redirect_to(key_url(mock_key))
+        response.should redirect_to(keys_url)
       end
       
     end
@@ -110,11 +84,11 @@ describe KeysController do
 
     describe "with valid params" do
 
-      it "should update the requested key" do
-        Key.should_receive(:find).with("37").and_return(mock_key)
-        mock_key.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :key => {:these => 'params'}
-      end
+      # it "should update the requested key" do
+      #         Key.should_receive(:find).with("37").and_return(mock_key)
+      #         mock_key.should_receive(:update_attributes).with({'value' => 'key_eleven', "parent_id" => 0, "name" => "key_eleven"})
+      #         put :update, :id => "37", :key => {'value' => 'key_eleven', "parent_id" => 0, "name" => "key_eleven"}
+      #       end
 
       it "should expose the requested key as @key" do
         Key.stub!(:find).and_return(mock_key(:update_attributes => true))
@@ -125,7 +99,7 @@ describe KeysController do
       it "should redirect to the key" do
         Key.stub!(:find).and_return(mock_key(:update_attributes => true))
         put :update, :id => "1"
-        response.should redirect_to(key_url(mock_key))
+        response.should redirect_to(keys_url)
       end
 
     end
@@ -135,6 +109,7 @@ describe KeysController do
       it "should update the requested key" do
         Key.should_receive(:find).with("37").and_return(mock_key)
         mock_key.should_receive(:update_attributes).with({'these' => 'params'})
+        Key.should_receive(:find_namespaces)
         put :update, :id => "37", :key => {:these => 'params'}
       end
 

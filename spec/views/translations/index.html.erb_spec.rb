@@ -14,9 +14,9 @@ describe "/translations/index.html.erb" do
     ]
   end
 
-  it "should render list of translations" do
-    render "/translations/index.html.erb"
-    response.should have_tag("tr>td", "value for value", 2)
-  end
+  # it "should render list of translations" do
+  #   render "/translations/index.html.erb"
+  #   response.should have_tag("tr>td", "value for value", 2)
+  # end
 end
 

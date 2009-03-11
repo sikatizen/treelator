@@ -7,6 +7,13 @@ describe Locale do
       :name => "value for name"
     }
   end
+  should_have_many :translations
+  should_have_many :keys, :through => :translations
+  
+  should_validate_presence_of :name, :iso_code
+  
+  should_have_many :traductors
+  should_have_many :users, :through => :traductors
 
   it "should create a new instance given valid attributes" do
     Locale.create!(@valid_attributes)

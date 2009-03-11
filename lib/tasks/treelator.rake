@@ -1,3 +1,6 @@
+require 'rake'
+require 'spec/rake/spectask'
+
 namespace :treelator do
 
   desc "Add an admin user. Parameters: login= password= email="
@@ -15,4 +18,12 @@ namespace :treelator do
     end
     
   end
+  
+  desc "Run all spec with RCov"
+  Spec::Rake::SpecTask.new('spec_with_rcov') do |t|
+    t.spec_files = FileList['spec/**/*.rb']
+    t.rcov = true
+    t.rcov_opts = ['--exclude', 'examples']
+  end
+  
 end

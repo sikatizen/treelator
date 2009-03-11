@@ -17,6 +17,17 @@
 #
 
 
+admin:
+  id:                        10
+  login:                     admin
+  email:                     admin@example.com
+  role:                      admin
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          15c1d050398824847e7e90b55bd431c20c88bf75 # 'monkey'
+  created_at:                <%= 5.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  
 quentin:
   id:                        1
   login:                     quentin

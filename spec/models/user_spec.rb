@@ -7,7 +7,10 @@ include AuthenticatedTestHelper
 
 describe User do
   fixtures :users
-
+  
+  should_have_many :traductors
+  should_have_many :locales, :through => :traductors
+  
   describe 'being created' do
     before do
       @user = nil
