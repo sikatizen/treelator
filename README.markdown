@@ -6,19 +6,27 @@
 First you need to install compass. 
 
 For this you have to install haml 2.1.0:
+
 git clone git://github.com/nex3/haml.git
+
 cd haml
+
 rake install
 
 The install compass:
+
 sudo gem install chriseppstein-compass -s http://gems.github.com/
 
 Now you're ready to install the app:
 
-clone the repo: git clone...
+clone the repo: git clone git@github.com:sikatizen/treelator.git
+
 configure database.yml
+
 Migrate: rake db:migrate
+
 add the first user: rake treelator:add_admin login=login password=password email=email"
+
 Launch the server: script/server
 
 ## Usage
