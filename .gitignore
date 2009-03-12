@@ -1,4 +1,6 @@
 config/database.yml
+config/deploy.rb
+Capfile
 db/schema.rb
 coverage
 log/*
