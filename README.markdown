@@ -13,7 +13,7 @@ cd haml
 
 rake install
 
-The install compass:
+Then install compass:
 
 sudo gem install chriseppstein-compass -s http://gems.github.com/
 
@@ -31,11 +31,52 @@ Launch the server: script/server
 
 ## Usage
 
+### Translations
+
+This is the interface where you translate the key.
+  
+### Locales
+Add your differents locales here.
+  
+### Key and namespace
+
+### Export
+Export only the translated key in the selected language.
+  
+### Import
+Allow you to import you .yml with key, namespace and tranlsations.
+The file must be begin by the iso code of the selected local (eg: en-US for american English)
+    en-US:
+      menu:
+        home: "home"
+        messages: "Messages"
+      mailbox:
+        inbox: "inbox"
+        outbox: "outbox"
+        
+And so on...
+
+
+### Users
+
+###Statistics
+Display the number of translation done by local
 ## Contributors
 
 Noé Froidevaux, Jonathan Biolaz
   
+## TODO
+
+- Add more test
+
+- Made the app as a plugin to have a better integration
+
+
 ## License
+
+Treelator is distributed under the Mit license.
+
+The MIT license:
 
 Copyright (c) 2008 Sikatizen
  

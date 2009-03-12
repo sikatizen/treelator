@@ -92,19 +92,4 @@
       even: "must be even"
       
   txt:
-    main_title: "Calame"
-    #app_name: "Demo Application"
-    #sub_title: "how to localize your app with Rails' new i18n features"
-    #contents: "Contents"
-    menu:
-      #introduction: "Introduction"
-      about: "About"
-      #setup: "Setup"
-      #date_formats: "Date formats"
-      #time_formats: "Time formats"
-    about:
-      #title: "About this demo app"
-      #author: "This demo app was written by {{mail_1}}."
-      #feedback: "If you have any feedback, please feel free to drop me a line. Also visit {{blog_href}} where I regularly blog about Rails and other stuff."
-      terms: "This demo app and all its contents are licensed under the {{licence_href}}. If you want to use it in ways prohibited by this license, please contact me and ask my permission."
-  
+    

@@ -19,6 +19,8 @@ class LoadFromYaml < ActiveRecord::Migration
     abbr_month_names = Key.create!( :sequence => true, :name => "abbr_month_names", :parent_id => namespace.id )
     order_ns = Key.create!( :sequence => true, :name => "order", :parent_id => namespace.id )
     
+    #created key that are displaying as a sequence ( eg: day_names: ["monday", "tuesday", "wednesday"])
+    
     for day in ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] do
       key = Key.create!( :name => day, :parent_id => day_names.id )
       Translation.create!( :value => day, :key_id => key.id, :locale_id => locale.id)
