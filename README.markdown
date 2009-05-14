@@ -1,5 +1,7 @@
 # Treelator
   
+  Treelator allow you to translate .yml and add easily some key and namespace.
+  
   
 ## Install
 
@@ -63,7 +65,7 @@ And so on...
 Display the number of translation done by local
 ## Contributors
 
-Noé Froidevaux, Jonathan Biolaz
+Jonathan Biolaz, Noé Froidevaux, Manuel Ryan, Philippe Rochat
   
 ## TODO
 
