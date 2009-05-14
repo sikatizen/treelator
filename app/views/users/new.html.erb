@@ -17,7 +17,7 @@
 
 <p>
   <%= label_tag 'role', 'Add a role' %><br/>
-  <%= select( "user", "role", { "Admin" => "admin", "Supervisor" => "supervisor", "Translator" => "translator"}) %>
+  <%= select( "user", "role", ROLES_LIST) %>
 </p>
 
 <p><%= submit_tag 'Sign up' %></p>

@@ -77,3 +77,4 @@ end
 # Sass::Plugin.options[:style] = :compact
 
 LOCALES_DIRECTORY = "#{RAILS_ROOT}/config/locales/"
+ROLES_LIST = { "Admin" => "admin", "Translator" => "translator"}

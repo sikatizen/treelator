@@ -60,6 +60,10 @@ And so on...
 
 
 ### Users
+  Here you can manage user.
+  There is actually two roles: 
+  - Admin: Can manage everything
+  - Translator: Have access only to the translation page
 
 ###Statistics
 Display the number of translation done by local
